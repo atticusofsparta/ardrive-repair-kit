@@ -1,3 +1,4 @@
+import { ArweaveWalletKit } from 'arweave-wallet-kit';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
@@ -8,6 +9,17 @@ import './services/sentry.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <ArweaveWalletKit
+      config={{
+        permissions: [
+          'ACCESS_ADDRESS',
+          'SIGN_TRANSACTION',
+          'SIGNATURE',
+          'ACCESS_PUBLIC_KEY',
+        ],
+      }}
+    >
+      <App />
+    </ArweaveWalletKit>
   </React.StrictMode>,
 );

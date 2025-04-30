@@ -40,7 +40,7 @@ export default defineConfig({
   ],
   base: '/',
   define: {
-    'process.env': process.env,
+    'process.env': {},
     VITE_CONFIG: {
       version: JSON.stringify(process.env.npm_package_version),
     },

@@ -1,20 +1,23 @@
 /** @type {import('tailwindcss').Config} */
-import { kebabCase } from 'lodash';
 
-import tokens from './tokens/tokens.js';
-
-const colors = Object.fromEntries(
-  Object.values(tokens.color).map(({ attributes, value }) => [
-    kebabCase(attributes.type),
-    value,
-  ]),
-);
 export default {
-  content: [],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class', // or 'media' or 'class
   theme: {
-    extend: {},
-    colors,
+    extend: {
+      colors: {
+        primary: '#000000',
+        secondary: '#111111',
+        tertiary: '#222222',
+        background: '#333333',
+        foreground: '#444444',
+        muted: '#555555',
+        accent: '#666666',
+        destructive: '#777777',
+        border: '#888888',
+        input: '#999999',
+      },
+    },
   },
   plugins: [require('tailwindcss-animate')],
 };
