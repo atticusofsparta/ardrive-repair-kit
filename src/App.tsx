@@ -1,6 +1,7 @@
 import { wrapCreateBrowserRouter } from '@sentry/react';
 import React, { Suspense } from 'react';
 import {
+  Navigate,
   Route,
   RouterProvider,
   createHashRouter,
@@ -17,10 +18,15 @@ const sentryCreateBrowserRouter = wrapCreateBrowserRouter(createHashRouter);
 function App() {
   const router = sentryCreateBrowserRouter(
     createRoutesFromElements(
-      <Route element={<AppRouterLayout />} errorElement={<NotFound />}>
+      <Route
+        path="/"
+        element={<AppRouterLayout />}
+        errorElement={<Navigate to="/" />}
+      >
         <Route
           index={true}
           path="/"
+          errorElement={<NotFound />}
           element={
             <Suspense
               fallback={<div className="center flex flex-row">Loading</div>}
